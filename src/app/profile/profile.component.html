@@ -1,0 +1,208 @@
+<div class="jumbotron junbotron-single d-flex align-items-center" style="background-image: url(assets/roxy/img/bg.jpg)">
+  <form (ngSubmit)="onSubmit()" #profileForm="ngForm" class="login-container">
+    <div class="container mt-4">
+      <div class="centrar">
+        <label>Foto de perfil:</label>
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+
+        <!-- Mostrar la imagen seleccionada -->
+        <div *ngIf="profileData.fotoUrl" class="mt-3">
+          <img [src]="profileData.fotoUrl" alt="Foto de perfil" width="100" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <!-- Se impide la entrada de números -->
+            <input type="text" id="nombre" name="nombre" class="form-control" [(ngModel)]="profileData.nombre" required
+              pattern="^[^0-9]*$" (keypress)="onlyText($event)" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" class="form-control" [(ngModel)]="profileData.apellido"
+              required pattern="^[^0-9]*$" (keypress)="onlyText($event)" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="oficio">Oficio</label>
+        <input type="text" id="oficio" name="oficio" class="form-control" [(ngModel)]="profileData.oficio" required
+          pattern="^[^0-9]*$" (keypress)="onlyText($event)" />
+      </div>
+
+      <div class="form-group">
+        <label for="miPerfil">Mi Perfil</label>
+        <textarea id="miPerfil" name="miPerfil" class="form-control" [(ngModel)]="profileData.miPerfil"
+          required></textarea>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <!-- Se permite números aquí -->
+            <input type="number" id="telefono" name="telefono" class="form-control" [(ngModel)]="profileData.telefono"
+              required />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="correo">Correo</label>
+            <!-- Email puede tener números -->
+            <input type="email" id="correo" name="correo" class="form-control" [(ngModel)]="profileData.correo"
+              required />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="paginaWeb">Página Web</label>
+        <input type="url" id="paginaWeb" name="paginaWeb" class="form-control" [(ngModel)]="profileData.paginaWeb" />
+      </div>
+
+      <div class="form-group">
+        <label for="direccion">Dirección</label>
+        <!-- Se impide números si se desea, pero puedes decidir si la dirección acepta números (por ej. 123 Main St) -->
+        <input type="text" id="direccion" name="direccion" class="form-control" [(ngModel)]="profileData.direccion"
+          required />
+      </div>
+
+      <!-- Sección de Mapa y autocompletado de ubicación -->
+      <div class="form-group">
+        <label for="map">Selecciona tu ubicación en el mapa</label>
+        <div class="map-container" style="display: flex; justify-content: center; align-items: center">
+          <div id="map" style="position: relative; height: 400px; width: 2400px;">
+          </div>
+        </div>
+      </div>
+      <div class="form-group mt-3">
+        <label>Ciudad:</label>
+        <input type="text" name="ciudad" class="form-control" [(ngModel)]="profileData.ciudad" />
+
+        <label>Estado:</label>
+        <input type="text" name="estado" class="form-control" [(ngModel)]="profileData.estado" />
+
+        <label>País:</label>
+        <input type="text" name="pais" class="form-control" [(ngModel)]="profileData.pais" />
+      </div>
+
+      <!-- Sección de experiencia laboral -->
+      <div class="form-group">
+        <label for="experiencia">Experiencia Laboral</label>
+        <div *ngFor="let exp of profileData.experienciaLaboral; let i = index">
+          <div class="form-row">
+            <div class="col-md-3">
+              <input type="text" name="empresa" [(ngModel)]="exp.empresa" placeholder="Empresa" class="form-control"
+                required pattern="^[^0-9]*$" (keypress)="onlyText($event)" />
+            </div>
+            <div class="col-md-3">
+              <input type="text" name="descripcion" [(ngModel)]="exp.descripcion" placeholder="Descripción"
+                class="form-control" required pattern="^[^0-9]*$" (keypress)="onlyText($event)" />
+            </div>
+            <div class="col-md-2">
+              <!-- Se permiten números en años -->
+              <input type="number" name="anioInicio" [(ngModel)]="exp.anioInicio" min="0" max="2025"
+                placeholder="Año Inicio" class="form-control" required />
+            </div>
+            <div class="col-md-2">
+              <input type="number" name="anioCierre" [(ngModel)]="exp.anioCierre" min="0" max="2025"
+                placeholder="Año Cierre" class="form-control" required />
+            </div>
+            <div class="col-md-2">
+              <button type="button" (click)="removeExperience(i)" class="btn btn-danger">
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+        <button type="button" (click)="addExperience()" class="btn btn-primary" style="margin: 10px">
+          Añadir Experiencia
+        </button>
+      </div>
+
+      <div class="form-group">
+        <label for="formacionAcademica">Formación académica</label>
+        <div *ngFor="let fa of profileData.formacionAcademica; let i = index">
+          <div class="form-row">
+            <div class="col-md-3">
+              <input type="text" name="universidad" [(ngModel)]="fa.universidad" placeholder="Universidad"
+                class="form-control" required pattern="^[^0-9]*$" (keypress)="onlyText($event)" />
+            </div>
+            <div class="col-md-3">
+              <input type="text" name="carrera" [(ngModel)]="fa.carrera" placeholder="Carrera" class="form-control"
+                required pattern="^[^0-9]*$" (keypress)="onlyText($event)" />
+            </div>
+            <div class="col-md-2">
+              <!-- Se permiten números en años -->
+              <input type="number" name="anioInicio" [(ngModel)]="fa.anioInicio" min="0" max="2025"
+                placeholder="Año Inicio" class="form-control" required />
+            </div>
+            <div class="col-md-2">
+              <input type="number" name="anioCierre" [(ngModel)]="fa.anioCierre" min="0" max="2025"
+                placeholder="Año Cierre" class="form-control" required />
+            </div>
+            <div class="col-md-2">
+              <button type="button" (click)="removeEducation(i)" class="btn btn-danger">
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+        <button type="button" (click)="addEducation()" class="btn btn-primary" style="margin: 10px">
+          Añadir Formación
+        </button>
+      </div>
+
+      <div class="form-group">
+        <label for="idiomas">Idiomas</label>
+        <input type="text" id="idiomas" name="idiomas" class="form-control" [(ngModel)]="profileData.idiomas" required
+          pattern="^[^0-9]*$" (keypress)="onlyText($event)" />
+      </div>
+
+      <div class="form-group">
+        <label for="competencias">Competencias</label>
+        <div style="display: flex;">
+          <input type="text" id="competencias" name="competencias" class="form-control"
+            [(ngModel)]="profileData.competencias" (keypress)="onlyText($event)" required />
+
+          <div class="slidecontainer">
+            <input type="range" min="1" max="10" value="5" class="slider" id="myRange" (click)="slider()"
+              [(ngModel)]="profileData.nro_competencias">
+            <p>Value: <span id="demo">5</span></p>
+          </div>
+          <!-- <button type="button" (click)="addCompetence()" class="btn btn-primary" style="margin: 10px">
+            Añadir Competencia
+          </button> -->
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="habilidades">Habilidades</label>
+        <div style="display: flex;">
+          <input type="text" id="habilidades" name="habilidades" class="form-control"
+            [(ngModel)]="profileData.habilidades" required />
+          <!-- <button type="button" (click)="addCompetence()" class="btn btn-primary" style="margin: 10px">
+                  Añadir Habilidad
+                </button> -->
+        </div>
+      </div>
+
+
+      <!-- Botones del formulario -->
+      <button type="submit" class="btn btn-success" [disabled]="!profileForm.valid">
+        Guardar
+      </button>
+      <button type="button" (click)="generarPdf()" class="btn btn-primary ml-2">
+        Imprimir PDF
+      </button>
+
+      <!-- <canvas id="demo"></canvas> -->
+      <!-- <button type="button" (click)="prueba()" class="btn btn-primary ml-2"> Prueba</button> -->
+    </div>
+  </form>
+</div>
