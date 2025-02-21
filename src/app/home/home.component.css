@@ -1,0 +1,13 @@
+section {
+  margin: 0 auto;
+  z-index: 1;
+  color: white;
+  background-color: rgb(142, 84, 169) !important;
+  opacity: 0.8;
+}
+
+.shadow {
+  background-color: white;
+  color: rgb(44, 38, 43);
+  opacity: 1 !important;
+}

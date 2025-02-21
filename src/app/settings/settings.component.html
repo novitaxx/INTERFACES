@@ -1,32 +1,29 @@
 <div class="jumbotron d-flex align-items-center">
   <div class="container text-center">
-    <h1 class="display-1 mb-4" style="font-size: 4rem">
-      ¡Crea un espectacular CV y sorprende a todos!
-    </h1>
-  </div>
-  <div class="rectangle-1"></div>
-  <div class="rectangle-2"></div>
-  <div class="rectangle-transparent-1"></div>
-  <div class="rectangle-transparent-2"></div>
-  <div class="circle-1"></div>
-  <div class="circle-2"></div>
-  <div class="circle-3"></div>
-  <div class="triangle triangle-1">
-    <img src="assets/roxy/img/obj_triangle.png" alt="no encontrado" />
-  </div>
-  <div class="triangle triangle-2">
-    <img src="assets/roxy/img/obj_triangle.png" alt="no encontrado" />
-  </div>
-  <div class="triangle triangle-3">
-    <img src="assets/roxy/img/obj_triangle.png" alt="no encontrado" />
-  </div>
-  <div class="triangle triangle-4">
-    <img src="assets/roxy/img/obj_triangle.png" alt="no encontrado" />
-  </div>
-</div>
+    <div class="login-container">
+      <h2>Configuraciones</h2>
+      <form>
+        <div class="form-group">
+          <label for="username">Color fondo</label>
+          <input type="color" class="color"/>
+        </div>
 
-<!-- Section -->
-<div class="jumbotron d-flex align-items-center">
+        <div class="form-group">
+          <label for="password">Color letra</label>
+
+          <input type="color" class="color"/>
+        </div>
+        <div class="form-group">
+          <label for="password">Tamaño párrafo</label>
+          <input type="number" id="tamanio" />
+        </div>
+        <a routerLink="/profile">
+          <button type="submit">Guardar</button>
+        </a>
+      </form>
+    </div>
+  </div>
+
   <section id="features" class="bg-white">
     <div class="container">
       <div class="section-content">
@@ -34,7 +31,9 @@
         <div class="title-wrap mb-5" data-aos="fade-up">
           <h2 class="section-title">¡Crea el CV de tus sueños!</h2>
           <p class="section-sub-title">
-            ¡Crea el mejor CV y cumple tus sueños!
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            <br />
+            pharetra augue. Donec id elit non mi.
           </p>
         </div>
         <!-- End of Section Title -->
