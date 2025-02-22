@@ -1,4 +1,17 @@
-.login-container {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.row {
+  justify-content: center;
+}
+
+.settings-container {
+  position: absolute;
+  left: 20%;
+  top: 30%;
   width: 100%;
   max-width: 400px;
   /* margin: auto; */
@@ -11,9 +24,13 @@
 }
 
 section {
+  padding: 20px;
   z-index: 1;
   color: rgb(255, 50, 50);
   background-color: rgb(180, 239, 254) !important;
+  position: absolute;
+  left: 55%;
+  width: 40%;
 }
 
 .color {

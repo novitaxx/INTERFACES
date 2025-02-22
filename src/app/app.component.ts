@@ -28,7 +28,7 @@ export class AppComponent {
   showSidebar = true;
 
   // Rutas donde no se mostrará el header
-  private hideHeaderRoutes = ['/profile'];
+  private hideHeaderRoutes = ['/profile', '/settings'];
 
   // Rutas donde no se mostrará el sidebar
   private hideSidebarRoutes = ['/home', '/login'];
