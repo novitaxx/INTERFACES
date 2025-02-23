@@ -4,18 +4,40 @@
       <h2>Configuraciones</h2>
       <form>
         <div class="form-group">
-          <label for="username">Color fondo</label>
-          <input type="color" class="color"/>
-        </div>
-
-        <div class="form-group">
-          <label for="password">Color letra</label>
-
-          <input type="color" class="color"/>
+          <label>Color de texto</label>
+          <input type="color" class="color" [(ngModel)]="colorTexto" name="colorTextoInput"/>
         </div>
         <div class="form-group">
-          <label for="password">Tamaño párrafo</label>
-          <input type="number" id="tamanio" />
+          <label>Color de fondo</label>
+          <input type="color" class="color" [(ngModel)]="colorFondo" name="colorFondoInput"/>
+        </div>
+        <div class="form-group">
+          <label>Color primario</label>
+          <input type="color" class="color" [(ngModel)]="colorPrimario" name="colorPrimarioInput"/>
+        </div>
+        <div class="form-group">
+          <label>Color secundario</label>
+          <input type="color" class="color" [(ngModel)]="colorSecundario" name="colorSecundarioInput"/>
+        </div>
+        <div class="form-group">
+          <label>Tamaño de fuente de párrafos</label>
+          <input type="number" id="tamanio" [(ngModel)]="tamaFuenteParrafos" name="tamaFuenteParrafosInput"/>
+        </div>
+        <div class="form-group">
+          <label>Tamaño de fuente de títulos</label>
+          <input type="number" id="tamanio" [(ngModel)]="tamaFuenteTitulos" name="tamaFuenteTitulosInput"/>
+        </div>
+        <div class="form-group">
+          <label>Tamaño de fuente de subtítulos</label>
+          <input type="number" id="tamanio" [(ngModel)]="tamaFuenteSubtitulos" name="tamaFuenteSubtitulosInput"/>
+        </div>
+        <div class="form-group">
+          <label>Tipografía principal</label>
+          <input type="file" id="tamanio" [(ngModel)]="tipoPrincipal" name="tipoPrincipalInput"/>
+        </div>
+        <div class="form-group">
+          <label>Tipografía secundaria</label>
+          <input type="file" id="tamanio" [(ngModel)]="tipoSecundaria" name="tipoSecundariaInput"/>
         </div>
         <a routerLink="/profile">
           <button type="submit">Guardar</button>
@@ -23,17 +45,14 @@
       </form>
     </div>
 
-
-  <section id="features" class="bg-white">
+  <section id="features" class="" [ngStyle]="{'color': colorTexto, 'background-color': colorFondo}">
     <div class="container">
       <div class="section-content">
         <!-- Section Title -->
         <div class="title-wrap mb-5" data-aos="fade-up">
-          <h2 class="section-title">¡Crea el CV de tus sueños!</h2>
+          <h2 class="section-title">Este es un título</h2>
           <p class="section-sub-title">
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-            <br />
-            pharetra augue. Donec id elit non mi.
+            Este es un texto de párrafo
           </p>
         </div>
         <!-- End of Section Title -->
@@ -44,29 +63,29 @@
               <!-- Features Item -->
               <div class="col-md-4 col-sm-12 text-center mt-4">
                 <div
-                  class="shadow rounded feature-item p-4 mb-4"
+                  class="shadow rounded feature-item p-4 mb-4" [ngStyle]="{'background-color': colorSecundario}"
                   data-aos="fade-up"
                 >
                   <div class="my-4">
                     <i class="lnr lnr-cog fs-40"></i>
                   </div>
-                  <h4>Easy to Customize</h4>
+                  <h4>Subtítulo 1</h4>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod.
+                    Párrafo 1
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </p>
                 </div>
                 <div
-                  class="shadow rounded feature-item p-4 mb-4"
+                  class="shadow rounded feature-item p-4 mb-4" [ngStyle]="{'background-color': colorSecundario}"
                   data-aos="fade-up"
                 >
                   <div class="my-4">
                     <i class="lnr lnr-frame-contract fs-40"></i>
                   </div>
-                  <h4>Pixel Perfect</h4>
+                  <h4>Subtítulo 2</h4>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod.
+                    Párrafo 2
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </p>
                 </div>
               </div>
@@ -74,29 +93,29 @@
               <!-- Features Item -->
               <div class="col-md-4 col-sm-12 text-center">
                 <div
-                  class="shadow rounded feature-item p-4 mb-4"
+                  class="shadow rounded feature-item p-4 mb-4" [ngStyle]="{'background-color': colorSecundario}"
                   data-aos="fade-up"
                 >
                   <div class="my-4">
                     <i class="lnr lnr-bubble fs-40"></i>
                   </div>
-                  <h4>Full Support</h4>
+                  <h4>Subtítulo 3</h4>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod.
+                    Párrafo 3
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </p>
                 </div>
                 <div
-                  class="shadow rounded feature-item p-4 mb-4"
+                  class="shadow rounded feature-item p-4 mb-4" [ngStyle]="{'background-color': colorSecundario}"
                   data-aos="fade-up"
                 >
                   <div class="my-4">
                     <i class="lnr lnr-magic-wand fs-40"></i>
                   </div>
-                  <h4>Clean Design</h4>
+                  <h4>Subtítulo 4</h4>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod.
+                    Párrafo 4
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </p>
                 </div>
               </div>
@@ -104,29 +123,29 @@
               <!-- Features Item -->
               <div class="col-md-4 col-sm-12 text-center mt-4">
                 <div
-                  class="shadow rounded feature-item p-4 mb-4"
+                  class="shadow rounded feature-item p-4 mb-4" [ngStyle]="{'background-color': colorSecundario}"
                   data-aos="fade-up"
                 >
                   <div class="my-4">
                     <i class="lnr lnr-clock fs-40"></i>
                   </div>
-                  <h4>Ontime Project</h4>
+                  <h4>Subtítulo 5</h4>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod.
+                    Párrafo 5
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </p>
                 </div>
                 <div
-                  class="shadow rounded feature-item p-4 mb-4"
+                  class="shadow rounded feature-item p-4 mb-4" [ngStyle]="{'background-color': colorSecundario}"
                   data-aos="fade-up"
                 >
                   <div class="my-4">
                     <i class="lnr lnr-thumbs-up fs-40"></i>
                   </div>
-                  <h4>Built with SASS</h4>
+                  <h4>Subtítulo 6</h4>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod.
+                    Párrafo 6
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </p>
                 </div>
               </div>
@@ -135,6 +154,7 @@
           </div>
           <!-- End of Features Holder-->
         </div>
+        <button class="primario" [ngStyle]="{'background-color': colorPrimario}">Botón</button>
       </div>
     </div>
   </section>

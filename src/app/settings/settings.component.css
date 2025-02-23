@@ -4,17 +4,21 @@
   box-sizing: border-box;
 }
 
+.shadow {
+  background-color: white;
+}
+
 .row {
   justify-content: center;
 }
 
 .settings-container {
   position: absolute;
-  left: 20%;
-  top: 30%;
-  width: 100%;
+  left: 25%;
+  top: 50%;
+  transform: translate(-25%, -50%);
+  width: 30%;
   max-width: 400px;
-  /* margin: auto; */
   padding: 20px;
   border-radius: 20px;
   background: #d333b1;
@@ -27,7 +31,7 @@ section {
   padding: 20px;
   z-index: 1;
   color: rgb(255, 50, 50);
-  background-color: rgb(180, 239, 254) !important;
+  background-color: rgb(255, 255, 255);
   position: absolute;
   left: 55%;
   width: 40%;
@@ -50,7 +54,7 @@ label {
 
 input {
   width: 100%;
-  padding: 8px;
+  padding: 1px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
