@@ -19,4 +19,30 @@ export class SettingsComponent {
   tamaFuenteSubtitulos = '24';
   tipoPrincipal = '';
   tipoSecundaria = '';
+
+  primaryFontFile: File | null = null;
+  secondaryFontFile: File | null = null;
+  primaryFontName = '';
+  secondaryFontName = '';
+  fontName = '';
+
+  onFileSelected(event: Event, type: 'primary' | 'secondary') {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      if (type === 'primary') {
+        this.primaryFontFile = file;
+        this.primaryFontName = file.name.replace('.ttf', '');
+      } else if (type === 'secondary') {
+        this.secondaryFontFile = file;
+        this.secondaryFontName = file.name.replace('.ttf', '');
+      }
+    }
+    if (this.primaryFontFile) {
+      this.fontName = this.primaryFontName;
+    } else {
+      this.fontName = this.secondaryFontName;
+    }
+
+  }
 }

@@ -1,57 +1,122 @@
 <div class="jumbotron d-flex align-items-center">
+  <div class="settings-container">
+    <h2>Configuraciones</h2>
+    <form>
+      <div class="form-group">
+        <label>Color de texto</label>
+        <input
+          type="color"
+          class="color"
+          [(ngModel)]="colorTexto"
+          name="colorTextoInput"
+        />
+      </div>
+      <div class="form-group">
+        <label>Color de fondo</label>
+        <input
+          type="color"
+          class="color"
+          [(ngModel)]="colorFondo"
+          name="colorFondoInput"
+        />
+      </div>
+      <div class="form-group">
+        <label>Color primario</label>
+        <input
+          type="color"
+          class="color"
+          [(ngModel)]="colorPrimario"
+          name="colorPrimarioInput"
+        />
+      </div>
+      <div class="form-group">
+        <label>Color secundario</label>
+        <input
+          type="color"
+          class="color"
+          [(ngModel)]="colorSecundario"
+          name="colorSecundarioInput"
+        />
+      </div>
+      <div class="form-group">
+        <label>Tamaño de fuente de párrafos</label>
+        <input
+          type="number"
+          id="tamanio"
+          [(ngModel)]="tamaFuenteParrafos"
+          name="tamaFuenteParrafosInput"
+        />
+      </div>
+      <div class="form-group">
+        <label>Tamaño de fuente de títulos</label>
+        <input
+          type="number"
+          id="tamanio"
+          [(ngModel)]="tamaFuenteTitulos"
+          name="tamaFuenteTitulosInput"
+        />
+      </div>
+      <div class="form-group">
+        <label>Tamaño de fuente de subtítulos</label>
+        <input
+          type="number"
+          id="tamanio"
+          [(ngModel)]="tamaFuenteSubtitulos"
+          name="tamaFuenteSubtitulosInput"
+        />
+      </div>
+      <div class="form-group">
+        <label>Tipografía principal</label>
+        <input
+          type="file"
+          id="tamanio"
+          [(ngModel)]="tipoPrincipal"
+          name="tipoPrincipalInput"
+          (change)="onFileSelected($event, 'primary')"
+          accept=".ttf, .otf"
+        />
+      </div>
+      <div class="form-group">
+        <label>Tipografía secundaria</label>
+        <input
+          type="file"
+          id="tamanio"
+          [(ngModel)]="tipoSecundaria"
+          name="tipoSecundariaInput"
+          (change)="onFileSelected($event, 'secondary')"
+          accept=".ttf, .otf"
+        />
+      </div>
+      <a routerLink="/profile">
+        <button type="submit">Guardar</button>
+      </a>
+    </form>
+  </div>
 
-    <div class="settings-container">
-      <h2>Configuraciones</h2>
-      <form>
-        <div class="form-group">
-          <label>Color de texto</label>
-          <input type="color" class="color" [(ngModel)]="colorTexto" name="colorTextoInput"/>
-        </div>
-        <div class="form-group">
-          <label>Color de fondo</label>
-          <input type="color" class="color" [(ngModel)]="colorFondo" name="colorFondoInput"/>
-        </div>
-        <div class="form-group">
-          <label>Color primario</label>
-          <input type="color" class="color" [(ngModel)]="colorPrimario" name="colorPrimarioInput"/>
-        </div>
-        <div class="form-group">
-          <label>Color secundario</label>
-          <input type="color" class="color" [(ngModel)]="colorSecundario" name="colorSecundarioInput"/>
-        </div>
-        <div class="form-group">
-          <label>Tamaño de fuente de párrafos</label>
-          <input type="number" id="tamanio" [(ngModel)]="tamaFuenteParrafos" name="tamaFuenteParrafosInput"/>
-        </div>
-        <div class="form-group">
-          <label>Tamaño de fuente de títulos</label>
-          <input type="number" id="tamanio" [(ngModel)]="tamaFuenteTitulos" name="tamaFuenteTitulosInput"/>
-        </div>
-        <div class="form-group">
-          <label>Tamaño de fuente de subtítulos</label>
-          <input type="number" id="tamanio" [(ngModel)]="tamaFuenteSubtitulos" name="tamaFuenteSubtitulosInput"/>
-        </div>
-        <div class="form-group">
-          <label>Tipografía principal</label>
-          <input type="file" id="tamanio" [(ngModel)]="tipoPrincipal" name="tipoPrincipalInput"/>
-        </div>
-        <div class="form-group">
-          <label>Tipografía secundaria</label>
-          <input type="file" id="tamanio" [(ngModel)]="tipoSecundaria" name="tipoSecundariaInput"/>
-        </div>
-        <a routerLink="/profile">
-          <button type="submit">Guardar</button>
-        </a>
-      </form>
-    </div>
-
-  <section id="features" class="" [ngStyle]="{'color': colorTexto, 'background-color': colorFondo}">
+  <section
+    id="features"
+    class=""
+    [ngStyle]="{
+      'color': colorTexto,
+      'background-color': colorFondo,
+      'font-family': fontName
+    }"
+  >
     <div class="container">
       <div class="section-content">
         <!-- Section Title -->
         <div class="title-wrap mb-5" data-aos="fade-up">
-          <h2 value="16px" class="section-title" [ngStyle]="{'font-size': tamaFuenteTitulos + 'px'}">Este es un título</h2>
-          <p class="section-sub-title" [ngStyle]="{'font-size': tamaFuenteParrafos + 'px'}">
+          <h2
+            value="16px"
+            class="section-title"
+            [ngStyle]="{ 'font-size': tamaFuenteTitulos + 'px' , 'font-family': fontName}"
+          >
+            Este es un título
+          </h2>
+          <p
+            class="section-sub-title"
+            [ngStyle]="{ 'font-size': tamaFuenteParrafos + 'px'}"
+          >
             Este es un texto de párrafo
           </p>
         </div>
@@ -63,29 +128,35 @@
               <!-- Features Item -->
               <div class="col-md-4 col-sm-12 text-center mt-4">
                 <div
-                  class="shadow rounded feature-item p-4 mb-4" [ngStyle]="{'background-color': colorSecundario}"
+                  class="shadow rounded feature-item p-4 mb-4"
+                  [ngStyle]="{ 'background-color': colorSecundario}"
                   data-aos="fade-up"
                 >
                   <div class="my-4">
                     <i class="lnr lnr-cog fs-40"></i>
                   </div>
-                  <h4 [ngStyle]="{'font-size': tamaFuenteSubtitulos + 'px'}">Subtítulo 1</h4>
-                  <p [ngStyle]="{'font-size': tamaFuenteParrafos + 'px'}">
-                    Párrafo 1
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <h4 [ngStyle]="{ 'font-size': tamaFuenteSubtitulos + 'px' , 'font-family': fontName}">
+                    Subtítulo 1
+                  </h4>
+                  <p [ngStyle]="{ 'font-size': tamaFuenteParrafos + 'px'}">
+                    Párrafo 1 Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit.
                   </p>
                 </div>
                 <div
-                  class="shadow rounded feature-item p-4 mb-4" [ngStyle]="{'background-color': colorSecundario}"
+                  class="shadow rounded feature-item p-4 mb-4"
+                  [ngStyle]="{ 'background-color': colorSecundario}"
                   data-aos="fade-up"
                 >
                   <div class="my-4">
                     <i class="lnr lnr-frame-contract fs-40"></i>
                   </div>
-                  <h4 [ngStyle]="{'font-size': tamaFuenteSubtitulos + 'px'}">Subtítulo 2</h4>
-                  <p [ngStyle]="{'font-size': tamaFuenteParrafos + 'px'}">
-                    Párrafo 2
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <h4 [ngStyle]="{ 'font-size': tamaFuenteSubtitulos + 'px' , 'font-family': fontName}">
+                    Subtítulo 2
+                  </h4>
+                  <p [ngStyle]="{ 'font-size': tamaFuenteParrafos + 'px'}">
+                    Párrafo 2 Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit.
                   </p>
                 </div>
               </div>
@@ -93,29 +164,35 @@
               <!-- Features Item -->
               <div class="col-md-4 col-sm-12 text-center">
                 <div
-                  class="shadow rounded feature-item p-4 mb-4" [ngStyle]="{'background-color': colorSecundario}"
+                  class="shadow rounded feature-item p-4 mb-4"
+                  [ngStyle]="{ 'background-color': colorSecundario}"
                   data-aos="fade-up"
                 >
                   <div class="my-4">
                     <i class="lnr lnr-bubble fs-40"></i>
                   </div>
-                  <h4 [ngStyle]="{'font-size': tamaFuenteSubtitulos + 'px'}">Subtítulo 3</h4>
-                  <p [ngStyle]="{'font-size': tamaFuenteParrafos + 'px'}">
-                    Párrafo 3
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <h4 [ngStyle]="{ 'font-size': tamaFuenteSubtitulos + 'px' , 'font-family': fontName}">
+                    Subtítulo 3
+                  </h4>
+                  <p [ngStyle]="{ 'font-size': tamaFuenteParrafos + 'px'}">
+                    Párrafo 3 Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit.
                   </p>
                 </div>
                 <div
-                  class="shadow rounded feature-item p-4 mb-4" [ngStyle]="{'background-color': colorSecundario}"
+                  class="shadow rounded feature-item p-4 mb-4"
+                  [ngStyle]="{ 'background-color': colorSecundario }"
                   data-aos="fade-up"
                 >
                   <div class="my-4">
                     <i class="lnr lnr-magic-wand fs-40"></i>
                   </div>
-                  <h4 [ngStyle]="{'font-size': tamaFuenteSubtitulos + 'px'}">Subtítulo 4</h4>
-                  <p [ngStyle]="{'font-size': tamaFuenteParrafos + 'px'}">
-                    Párrafo 4
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <h4 [ngStyle]="{ 'font-size': tamaFuenteSubtitulos + 'px' , 'font-family': fontName}">
+                    Subtítulo 4
+                  </h4>
+                  <p [ngStyle]="{ 'font-size': tamaFuenteParrafos + 'px'}">
+                    Párrafo 4 Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit.
                   </p>
                 </div>
               </div>
@@ -123,29 +200,35 @@
               <!-- Features Item -->
               <div class="col-md-4 col-sm-12 text-center mt-4">
                 <div
-                  class="shadow rounded feature-item p-4 mb-4" [ngStyle]="{'background-color': colorSecundario}"
+                  class="shadow rounded feature-item p-4 mb-4"
+                  [ngStyle]="{ 'background-color': colorSecundario }"
                   data-aos="fade-up"
                 >
                   <div class="my-4">
                     <i class="lnr lnr-clock fs-40"></i>
                   </div>
-                  <h4 [ngStyle]="{'font-size': tamaFuenteSubtitulos + 'px'}">Subtítulo 5</h4>
-                  <p [ngStyle]="{'font-size': tamaFuenteParrafos + 'px'}">
-                    Párrafo 5
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <h4 [ngStyle]="{ 'font-size': tamaFuenteSubtitulos + 'px' , 'font-family': fontName}">
+                    Subtítulo 5
+                  </h4>
+                  <p [ngStyle]="{ 'font-size': tamaFuenteParrafos + 'px'}">
+                    Párrafo 5 Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit.
                   </p>
                 </div>
                 <div
-                  class="shadow rounded feature-item p-4 mb-4" [ngStyle]="{'background-color': colorSecundario}"
+                  class="shadow rounded feature-item p-4 mb-4"
+                  [ngStyle]="{ 'background-color': colorSecundario }"
                   data-aos="fade-up"
                 >
                   <div class="my-4">
                     <i class="lnr lnr-thumbs-up fs-40"></i>
                   </div>
-                  <h4 [ngStyle]="{'font-size': tamaFuenteSubtitulos + 'px'}">Subtítulo 6</h4>
-                  <p [ngStyle]="{'font-size': tamaFuenteParrafos + 'px'}">
-                    Párrafo 6
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  <h4 [ngStyle]="{ 'font-size': tamaFuenteSubtitulos + 'px' , 'font-family': fontName}">
+                    Subtítulo 6
+                  </h4>
+                  <p [ngStyle]="{ 'font-size': tamaFuenteParrafos + 'px'}">
+                    Párrafo 6 Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit.
                   </p>
                 </div>
               </div>
@@ -154,7 +237,16 @@
           </div>
           <!-- End of Features Holder-->
         </div>
-        <button class="primario" [ngStyle]="{'color': colorTexto, 'background-color': colorPrimario, 'font-size': tamaFuenteParrafos + 'px'}">Botón</button>
+        <button
+          class="primario"
+          [ngStyle]="{
+            color: colorTexto,
+            'background-color': colorPrimario,
+            'font-size': tamaFuenteParrafos + 'px'
+          }"
+        >
+          Botón
+        </button>
       </div>
     </div>
   </section>
