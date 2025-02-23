@@ -6,6 +6,8 @@
 
 .shadow {
   background-color: white;
+  border-radius: 20px;
+  border: solid 1px #d333b1;
 }
 
 .row {
@@ -65,7 +67,6 @@ button {
   border: none;
   background: #6f00ff;
   color: white;
-  font-size: 16px;
   cursor: pointer;
   border-radius: 4px;
 }

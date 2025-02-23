@@ -10,13 +10,13 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './settings.component.css',
 })
 export class SettingsComponent {
-  colorTexto = '';
-  colorFondo = '';
-  colorPrimario = '';
-  colorSecundario = '';
-  tamaFuenteParrafos = '';
-  tamaFuenteTitulos = '';
-  tamaFuenteSubtitulos = '';
+  colorTexto = '#ffffff';
+  colorFondo = '#d333b1';
+  colorPrimario = '#6f00ff';
+  colorSecundario = '#8f2299';
+  tamaFuenteParrafos = '16';
+  tamaFuenteTitulos = '32';
+  tamaFuenteSubtitulos = '24';
   tipoPrincipal = '';
   tipoSecundaria = '';
 }

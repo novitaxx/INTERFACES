@@ -50,8 +50,8 @@
       <div class="section-content">
         <!-- Section Title -->
         <div class="title-wrap mb-5" data-aos="fade-up">
-          <h2 class="section-title">Este es un título</h2>
-          <p class="section-sub-title">
+          <h2 value="16px" class="section-title" [ngStyle]="{'font-size': tamaFuenteTitulos + 'px'}">Este es un título</h2>
+          <p class="section-sub-title" [ngStyle]="{'font-size': tamaFuenteParrafos + 'px'}">
             Este es un texto de párrafo
           </p>
         </div>
@@ -69,8 +69,8 @@
                   <div class="my-4">
                     <i class="lnr lnr-cog fs-40"></i>
                   </div>
-                  <h4>Subtítulo 1</h4>
-                  <p>
+                  <h4 [ngStyle]="{'font-size': tamaFuenteSubtitulos + 'px'}">Subtítulo 1</h4>
+                  <p [ngStyle]="{'font-size': tamaFuenteParrafos + 'px'}">
                     Párrafo 1
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </p>
@@ -82,8 +82,8 @@
                   <div class="my-4">
                     <i class="lnr lnr-frame-contract fs-40"></i>
                   </div>
-                  <h4>Subtítulo 2</h4>
-                  <p>
+                  <h4 [ngStyle]="{'font-size': tamaFuenteSubtitulos + 'px'}">Subtítulo 2</h4>
+                  <p [ngStyle]="{'font-size': tamaFuenteParrafos + 'px'}">
                     Párrafo 2
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </p>
@@ -99,8 +99,8 @@
                   <div class="my-4">
                     <i class="lnr lnr-bubble fs-40"></i>
                   </div>
-                  <h4>Subtítulo 3</h4>
-                  <p>
+                  <h4 [ngStyle]="{'font-size': tamaFuenteSubtitulos + 'px'}">Subtítulo 3</h4>
+                  <p [ngStyle]="{'font-size': tamaFuenteParrafos + 'px'}">
                     Párrafo 3
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </p>
@@ -112,8 +112,8 @@
                   <div class="my-4">
                     <i class="lnr lnr-magic-wand fs-40"></i>
                   </div>
-                  <h4>Subtítulo 4</h4>
-                  <p>
+                  <h4 [ngStyle]="{'font-size': tamaFuenteSubtitulos + 'px'}">Subtítulo 4</h4>
+                  <p [ngStyle]="{'font-size': tamaFuenteParrafos + 'px'}">
                     Párrafo 4
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </p>
@@ -129,8 +129,8 @@
                   <div class="my-4">
                     <i class="lnr lnr-clock fs-40"></i>
                   </div>
-                  <h4>Subtítulo 5</h4>
-                  <p>
+                  <h4 [ngStyle]="{'font-size': tamaFuenteSubtitulos + 'px'}">Subtítulo 5</h4>
+                  <p [ngStyle]="{'font-size': tamaFuenteParrafos + 'px'}">
                     Párrafo 5
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </p>
@@ -142,8 +142,8 @@
                   <div class="my-4">
                     <i class="lnr lnr-thumbs-up fs-40"></i>
                   </div>
-                  <h4>Subtítulo 6</h4>
-                  <p>
+                  <h4 [ngStyle]="{'font-size': tamaFuenteSubtitulos + 'px'}">Subtítulo 6</h4>
+                  <p [ngStyle]="{'font-size': tamaFuenteParrafos + 'px'}">
                     Párrafo 6
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   </p>
@@ -154,7 +154,7 @@
           </div>
           <!-- End of Features Holder-->
         </div>
-        <button class="primario" [ngStyle]="{'background-color': colorPrimario}">Botón</button>
+        <button class="primario" [ngStyle]="{'color': colorTexto, 'background-color': colorPrimario, 'font-size': tamaFuenteParrafos + 'px'}">Botón</button>
       </div>
     </div>
   </section>
