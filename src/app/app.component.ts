@@ -31,7 +31,7 @@ export class AppComponent {
   private hideHeaderRoutes = ['/profile', '/settings'];
 
   // Rutas donde no se mostrará el sidebar
-  private hideSidebarRoutes = ['/home', '/login'];
+  private hideSidebarRoutes = ['/home', '/login', '/', ''];
 
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
@@ -41,6 +41,12 @@ export class AppComponent {
 
         // Verifica si la ruta actual está en la lista de rutas ocultas para el sidebar
         this.showSidebar = !this.hideSidebarRoutes.includes(event.url);
+
+        if (!this.router.config.some(route => route.path === event.url.replace('/', ''))) {
+          this.router.navigate(['/home']).then(() => {
+            // Después de la redirección, vuelve a evaluar la visibilidad del sidebar
+            this.showSidebar = !this.hideSidebarRoutes.includes('/home');
+          });}
       }
     });
   }
