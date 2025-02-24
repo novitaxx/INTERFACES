@@ -34,6 +34,41 @@ app.post("/api/saveProfile", (req, res) => {
   );
 });
 
+//Endpoint para guardar la configuración en un archivo JSON
+app.post("/api/saveSettings", (req, res) => {
+  console.log("Recibí una solicitud POST en /api/saveSettings");
+  console.log("Datos recibidos:", req.body);
+
+  const settingsData = req.body;
+
+  fs.writeFile(
+    "settingsData.json",
+    JSON.stringify(settingsData, null, 2),
+    (err) => {
+      if (err) {
+        console.error("Error al guardar el archivo:", err);
+        return res
+          .status(500)
+          .json({ message: "Error al guardar los datos", error: err });
+      }
+      console.log("Archivo settingsData.json guardado exitosamente");
+      res.status(200).json({ message: "Datos guardados exitosamente" });
+    }
+  );
+});
+
+//Enpoint para extraer la configuración del archivo JSON
+app.get("/api/getSettings", (req, res) => {
+  fs.readFile("settingsData.json", (err, data) => {
+    if (err) {
+      console.error("Error al leer el archivo:", err);
+      return res.status(500).json({ message: "Error al leer los datos" });
+    }
+    const settingsData = JSON.parse(data);
+    res.status(200).json(settingsData);
+  });
+});
+
 async function modifyPdf() {
   const url = "./perfil.pdf";
   const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());

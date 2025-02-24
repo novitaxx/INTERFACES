@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { SettingsService } from './settings.service';
 
 @Component({
   selector: 'app-settings',
@@ -9,22 +10,53 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.css',
 })
-export class SettingsComponent {
-  colorTexto = '#ffffff';
-  colorFondo = '#d333b1';
-  colorPrimario = '#6f00ff';
-  colorSecundario = '#8f2299';
-  tamaFuenteParrafos = '16';
-  tamaFuenteTitulos = '32';
-  tamaFuenteSubtitulos = '24';
-  tipoPrincipal = '';
-  tipoSecundaria = '';
+export class SettingsComponent implements OnInit {
+  settingsData = {
+    colorTexto: '#ffffff',
+    colorFondo: '#d333b1',
+    colorPrimario: '#6f00ff',
+    colorSecundario: '#8f2299',
+    tamaFuenteParrafos: '16',
+    tamaFuenteTitulos: '32',
+    tamaFuenteSubtitulos: '24',
+    tipoPrincipal: '',
+    tipoSecundaria: '',
 
-  primaryFontFile: File | null = null;
-  secondaryFontFile: File | null = null;
-  primaryFontName = '';
-  secondaryFontName = '';
-  fontName = '';
+    primaryFontFile: null as File | null,
+    secondaryFontFile: null as File | null,
+    primaryFontName: '',
+    secondaryFontName: '',
+    fontName: '',
+  };
+
+  constructor(private SettingsService: SettingsService) {}
+
+  primaryFontFile!: File;
+  primaryFontName!: string;
+  secondaryFontFile!: File;
+  secondaryFontName!: string;
+  fontName: any;
+
+  ngOnInit(): void {
+    this.SettingsService.getSettings().subscribe((response: any) => {
+      console.log('Datos obtenidos correctamente:', response);
+      this.settingsData = response;
+    });
+  }
+
+  onSubmit() {
+    console.log('Formulario enviado:', this.settingsData);
+    this.SettingsService.saveSettings(this.settingsData).subscribe(
+      (response: any) => {
+        console.log('Datos guardados correctamente:', response);
+        alert('Perfil guardado correctamente');
+      },
+      (error: any) => {
+        console.error('Error al guardar los datos:', error);
+        alert('Hubo un error al guardar los datos');
+      }
+    );
+  }
 
   onFileSelected(event: Event, type: 'primary' | 'secondary') {
     const input = event.target as HTMLInputElement;
@@ -43,6 +75,5 @@ export class SettingsComponent {
     } else {
       this.fontName = this.secondaryFontName;
     }
-
   }
 }

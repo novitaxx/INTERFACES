@@ -13,6 +13,10 @@ form {
   /* Full-width */
 }
 
+.jumbotron {
+  margin-left: 160px;
+}
+
 .slider {
   -webkit-appearance: none;
   /* Override default styles */
