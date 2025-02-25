@@ -18,4 +18,10 @@ export class SettingsService {
   getSettings(): Observable<any> {
     return this.http.get(`${this.apiUrl}/getSettings`);
   }
+
+  deleteFileByName(nombre: string): Observable<any> {
+    const url = `${this.apiUrl}/deleteFileByName/${nombre}`;
+    console.log('URL de eliminación:', url); // Verifica la URL
+    return this.http.delete(url);
+  }
 }

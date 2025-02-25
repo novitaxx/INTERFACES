@@ -1,11 +1,12 @@
 {
-  "colorTexto": "#fe0b0b",
-  "colorFondo": "#ffffff",
-  "colorPrimario": "#e1ff00",
-  "colorSecundario": "#9ddde1",
-  "tamaFuenteParrafos": 14,
-  "tamaFuenteTitulos": 33,
-  "tamaFuenteSubtitulos": 22,
+  "nombre": "tritanopia",
+  "colorTexto": "#1100ff",
+  "colorFondo": "#ffae00",
+  "colorPrimario": "#000000",
+  "colorSecundario": "#ff0000",
+  "tamaFuenteParrafos": "16",
+  "tamaFuenteTitulos": "32",
+  "tamaFuenteSubtitulos": "24",
   "primaryFontName": "Times New Roman",
-  "secondaryFontName": "Times New Roman"
+  "secondaryFontName": "arial"
 }

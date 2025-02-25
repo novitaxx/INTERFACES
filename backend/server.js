@@ -3,10 +3,13 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const PDFDocument = require("pdfkit");
-const { log } = require("@angular-devkit/build-angular/src/builders/ssr-dev-server");
+const path = require("path");
 
 const app = express();
 const port = 3000;
+
+// Ruta a la carpeta donde están los archivos
+const filesFolder = path.join(__dirname, "settingsDatas");
 
 app.use(cors());
 app.use(bodyParser.json({ limit: "50mb" })); // Aumenta el límite para manejar imágenes en base64
@@ -42,7 +45,7 @@ app.post("/api/saveSettings", (req, res) => {
 
   const settingsData = req.body;
 
-  fs.readdir("settingsDatas", (err, files) => {
+  fs.readdir(filesFolder, (err, files) => {
     if (err) {
       console.error("Error al leer el archivo:", err);
       return res.status(500).json({ message: "Error al leer los datos" });
@@ -68,17 +71,67 @@ app.post("/api/saveSettings", (req, res) => {
   });
 });
 
-//Enpoint para extraer la configuración del archivo JSON
-app.get("/api/getSettings", (req, res) => {
-  fs.readFile("settingsData.json", (err, data) => {
+// Endpoint para obtener el contenido de los archivos JSON
+app.get('/api/getSettings', (req, res) => {
+  fs.readdir(filesFolder, (err, files) => {
     if (err) {
-      console.error("Error al leer el archivo:", err);
-      return res.status(500).json({ message: "Error al leer los datos" });
+      return res.status(500).send('Error al leer la carpeta');
     }
-    const settingsData = JSON.parse(data);
-    res.status(200).json(settingsData);
+
+    // Filtrar solo archivos JSON
+    const jsonFiles = files.filter(file => path.extname(file).toLowerCase() === '.json');
+
+    // Leer el contenido de cada archivo JSON
+    const filesContent = jsonFiles.map(file => {
+      const filePath = path.join(filesFolder, file);
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
+      return JSON.parse(fileContent); // Convertir el contenido a objeto JSON
+    });
+
+    // Devolver el contenido de los archivos JSON
+    console.log("Se ha devuelto el contenido de los archivos JSON:", filesContent);
+    
+    res.json({ files: filesContent });
   });
 });
+
+// Endpoint para eliminar un archivo JSON por la propiedad "nombre"
+app.delete('/api/deleteFileByName/:nombre', (req, res) => {
+  console.log("Recibí una solicitud DELETE en /deleteFileByName/:nombre");
+  
+  const nombreBuscado = req.params.nombre; // Valor de la propiedad "nombre" a buscar
+
+  // Leer todos los archivos en la carpeta
+  fs.readdir(filesFolder, (err, files) => {
+    if (err) {
+      return res.status(500).json({ success: false, message: 'Error al leer la carpeta' });
+    }
+
+    // Filtrar solo archivos JSON
+    const jsonFiles = files.filter(file => path.extname(file).toLowerCase() === '.json');
+
+    let archivoEliminado = false;
+
+    // Buscar el archivo que contiene la propiedad "nombre" con el valor buscado
+    jsonFiles.forEach(file => {
+      const filePath = path.join(filesFolder, file);
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
+      const jsonData = JSON.parse(fileContent);
+
+      if (jsonData.nombre === nombreBuscado) {
+        fs.unlinkSync(filePath); // Eliminar el archivo
+        archivoEliminado = true;
+      }
+    });
+
+    if (archivoEliminado) {
+      res.json({ success: true, message: 'Archivo eliminado correctamente' });
+    } else {
+      res.status(404).json({ success: false, message: 'Archivo no encontrado' });
+    }
+  });
+});
+
 
 async function modifyPdf() {
   const url = "./perfil.pdf";

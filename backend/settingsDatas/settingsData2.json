@@ -1,11 +1,12 @@
 {
-  "colorTexto": "#fe0b0b",
-  "colorFondo": "#ffffff",
-  "colorPrimario": "#e1ff00",
-  "colorSecundario": "#9ddde1",
-  "tamaFuenteParrafos": 14,
-  "tamaFuenteTitulos": 33,
-  "tamaFuenteSubtitulos": 22,
-  "primaryFontName": "arial",
-  "secondaryFontName": "Times New Roman"
+  "nombre": "deuteranopia",
+  "colorTexto": "#ff00f7",
+  "colorFondo": "#00ff2a",
+  "colorPrimario": "#ffdd00",
+  "colorSecundario": "#000000",
+  "tamaFuenteParrafos": "16",
+  "tamaFuenteTitulos": "32",
+  "tamaFuenteSubtitulos": "24",
+  "primaryFontName": "",
+  "secondaryFontName": ""
 }

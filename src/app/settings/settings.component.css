@@ -117,15 +117,48 @@ button:hover {
 
 .caja {
   z-index: 1;
-  border: 1px solid white;
-  margin: 2vh;
-  padding: 1vh;
-  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
   color: white;
 }
 
 .h2 {
-  color: white;
   border: 0;
-  margin-bottom: 5vh;
+  margin-bottom: 3vh;
+}
+
+.contenido {
+  display: flex; /* Activa Flexbox */
+  align-items: center; /* Centra verticalmente los elementos */
+  justify-content: space-between; /* Espacio entre el texto y el botón */
+}
+
+.nombre {
+  margin-right: 10px; /* Espacio entre el texto y el botón */
+}
+
+.botonE {
+  color: white;
+  border: none;
+  padding: 3px 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  margin: 5px;
+  background-color: green;
+}
+
+.botonD {
+  color: white;
+  border: none;
+  padding: 3px 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  margin: 5px;
+  background-color: red;
 }

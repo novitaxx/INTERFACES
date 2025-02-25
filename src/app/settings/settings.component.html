@@ -4,6 +4,15 @@
       <h2>Configuraciones</h2>
       <form (ngSubmit)="onSubmit()">
         <div class="form-group">
+          <label>Nombre de la configuración</label>
+          <input
+            type="text"
+            class="color"
+            [(ngModel)]="settingsData.nombre"
+            name="nombreInput"
+          />
+        </div>
+        <div class="form-group">
           <label>Color de texto</label>
           <input
             type="color"
@@ -88,7 +97,7 @@
             accept=".ttf, .otf"
           />
         </div>
-        <a routerLink="/profile">
+        <a routerLink="/settings">
           <button type="submit">Guardar</button>
         </a>
       </form>
@@ -345,7 +354,9 @@
 
 <div id="contenedor" class="jumbotron d-flex align-items-center">
   <h2 class="caja h2">Paletas de configuaciones guardadas</h2>
-  <div class="caja">(Configuracion 1)</div>
-  <div class="caja">(Configuracion 2)</div>
-  <div class="caja">(Configuracion 3)</div>
+  <div *ngFor="let file of filesContent" class="caja contenido">
+      <div class="nombre">{{ file.nombre }}</div>
+      <button class="botonE" (click)="establecer(file.nombre)">Establecer</button>
+      <button class="botonD" (click)="eliminar(file.nombre)" >Eliminar</button>
+  </div>
 </div>
