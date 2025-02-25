@@ -3,7 +3,7 @@
 }
 
 .sidebar {
-  width: 20vw;
+  width: 14vw;
   height: 100vh;
   background-color: #672e60;
   color: #ecf0f1;
@@ -27,8 +27,8 @@
 }
 
 .sidebar-nav li {
-  padding: 10px 20px;
-  border: 1px solid #c377ba;
+  padding: 5px 10px;
+  border: 0.1px solid #754b70;
 }
 
 .sidebar-nav li a {
@@ -44,8 +44,10 @@
 
 .sidebar-nav li a:hover {
   background-color: #565d6f;
+  border-radius: 30px;
 }
 
 .active {
-  background-color: #5829ab;
+  background-color: #7d5479;
+  border-radius: 30px;
 }
