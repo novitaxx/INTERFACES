@@ -19,23 +19,16 @@ export class SettingsComponent implements OnInit {
     tamaFuenteParrafos: '16',
     tamaFuenteTitulos: '32',
     tamaFuenteSubtitulos: '24',
-    tipoPrincipal: '',
-    tipoSecundaria: '',
-
-    primaryFontFile: null as File | null,
-    secondaryFontFile: null as File | null,
     primaryFontName: '',
     secondaryFontName: '',
-    fontName: '',
   };
 
-  constructor(private SettingsService: SettingsService) {}
+  tipoPrincipal = '';
+  tipoSecundaria = '';
+  primaryFontFile = null as File | null;
+  secondaryFontFile = null as File | null;
 
-  primaryFontFile!: File;
-  primaryFontName!: string;
-  secondaryFontFile!: File;
-  secondaryFontName!: string;
-  fontName: any;
+  constructor(private SettingsService: SettingsService) {}
 
   ngOnInit(): void {
     this.SettingsService.getSettings().subscribe((response: any) => {
@@ -49,7 +42,7 @@ export class SettingsComponent implements OnInit {
     this.SettingsService.saveSettings(this.settingsData).subscribe(
       (response: any) => {
         console.log('Datos guardados correctamente:', response);
-        alert('Perfil guardado correctamente');
+        alert('Configuración guardada correctamente');
       },
       (error: any) => {
         console.error('Error al guardar los datos:', error);
@@ -64,16 +57,11 @@ export class SettingsComponent implements OnInit {
       const file = input.files[0];
       if (type === 'primary') {
         this.primaryFontFile = file;
-        this.primaryFontName = file.name.replace('.ttf', '');
+        this.settingsData.primaryFontName = file.name.replace('.ttf', '');
       } else if (type === 'secondary') {
         this.secondaryFontFile = file;
-        this.secondaryFontName = file.name.replace('.ttf', '');
+        this.settingsData.secondaryFontName = file.name.replace('.ttf', '');
       }
-    }
-    if (this.primaryFontFile) {
-      this.fontName = this.primaryFontName;
-    } else {
-      this.fontName = this.secondaryFontName;
     }
   }
 }

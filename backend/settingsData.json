@@ -1,16 +1,11 @@
 {
-  "colorTexto": "#ffffff",
-  "colorFondo": "#d333b1",
-  "colorPrimario": "#6f00ff",
-  "colorSecundario": "#8f2299",
-  "tamaFuenteParrafos": "16",
-  "tamaFuenteTitulos": "32",
-  "tamaFuenteSubtitulos": 33,
-  "tipoPrincipal": "C:\\fakepath\\Little Days Alt.ttf",
-  "tipoSecundaria": "C:\\fakepath\\Little days.ttf",
-  "primaryFontFile": null,
-  "secondaryFontFile": null,
-  "primaryFontName": "",
-  "secondaryFontName": "",
-  "fontName": ""
+  "colorTexto": "#1a20d1",
+  "colorFondo": "#d0a9c8",
+  "colorPrimario": "#b4d930",
+  "colorSecundario": "#67a87d",
+  "tamaFuenteParrafos": 18,
+  "tamaFuenteTitulos": 38,
+  "tamaFuenteSubtitulos": 31,
+  "primaryFontName": "arial",
+  "secondaryFontName": "Times New Roman"
 }
