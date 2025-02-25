@@ -3,6 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const PDFDocument = require("pdfkit");
+const { log } = require("@angular-devkit/build-angular/src/builders/ssr-dev-server");
 
 const app = express();
 const port = 3000;
@@ -46,9 +47,12 @@ app.post("/api/saveSettings", (req, res) => {
       console.error("Error al leer el archivo:", err);
       return res.status(500).json({ message: "Error al leer los datos" });
     }
-    number = files.length;
+    let number = 1;
+    while (files.includes(`settingsData${number}.json`)) {
+      number++;
+    }    
     fs.writeFile(
-      `settingsDatas/settingsData${number + 1}.json`,
+      `settingsDatas/settingsData${number}.json`,
       JSON.stringify(settingsData, null, 2),
       (err) => {
         if (err) {
