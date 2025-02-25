@@ -41,20 +41,27 @@ app.post("/api/saveSettings", (req, res) => {
 
   const settingsData = req.body;
 
-  fs.writeFile(
-    "settingsData.json",
-    JSON.stringify(settingsData, null, 2),
-    (err) => {
-      if (err) {
-        console.error("Error al guardar el archivo:", err);
-        return res
-          .status(500)
-          .json({ message: "Error al guardar los datos", error: err });
-      }
-      console.log("Archivo settingsData.json guardado exitosamente");
-      res.status(200).json({ message: "Datos guardados exitosamente" });
+  fs.readdir("settingsDatas", (err, files) => {
+    if (err) {
+      console.error("Error al leer el archivo:", err);
+      return res.status(500).json({ message: "Error al leer los datos" });
     }
-  );
+    number = files.length;
+    fs.writeFile(
+      `settingsDatas/settingsData${number + 1}.json`,
+      JSON.stringify(settingsData, null, 2),
+      (err) => {
+        if (err) {
+          console.error("Error al guardar el archivo:", err);
+          return res
+            .status(500)
+            .json({ message: "Error al guardar los datos", error: err });
+        }
+        console.log("Archivo settingsData.json guardado exitosamente");
+        res.status(200).json({ message: "Datos guardados exitosamente" });
+      }
+    );
+  });
 });
 
 //Enpoint para extraer la configuración del archivo JSON
