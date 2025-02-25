@@ -102,3 +102,30 @@ button {
 button:hover {
   background: #0056b3;
 }
+
+#contenedor {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 100vh;
+  color: black;
+  padding-left: 17vw;
+  padding-right: 3vw;
+  padding-top: 5vh;
+  border-top: 5px dotted #d333b1;
+}
+
+.caja {
+  z-index: 1;
+  border: 1px solid white;
+  margin: 2vh;
+  padding: 1vh;
+  width: 100%;
+  color: white;
+}
+
+.h2 {
+  color: white;
+  border: 0;
+  margin-bottom: 5vh;
+}
